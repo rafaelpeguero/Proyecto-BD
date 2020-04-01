@@ -1,0 +1,10 @@
+Fabrica de quesos
+Direccion: El Egido, Calle #5. Telefono: 849-223-4321
+Codigo Factura: F-2
+Nombre Cliente:Alicia Cruz
+Fecha:2019-07-25
+Tipo FacturaEfectivo
+Items Comprados: 
+Q-2 83.115
+Q-1 46.558
+Precio Total: 129.673
