@@ -10,8 +10,10 @@ public class Cliente implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * 
+	 * Hola Jhoan
 	 */
+	
+	
 	
 	private String nombre;
 	private String direccion;
