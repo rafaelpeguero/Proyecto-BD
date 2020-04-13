@@ -10,6 +10,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import java.awt.Toolkit;
 
 public class Principal_ {
 
@@ -43,9 +44,10 @@ public class Principal_ {
 	 */
 	private void initialize() {
 		frmArsPucmm = new JFrame();
+		frmArsPucmm.setIconImage(Toolkit.getDefaultToolkit().getImage(Principal_.class.getResource("/imagenes/faviconnew.png")));
 		frmArsPucmm.setTitle("ARS PUCMM\r\n");
 		frmArsPucmm.setResizable(false);
-		frmArsPucmm.setBounds(100, 100, 1440, 900);
+		frmArsPucmm.setBounds(100, 100, 1280, 900);
 		frmArsPucmm.setLocationRelativeTo(null);
 		frmArsPucmm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -55,23 +57,32 @@ public class Principal_ {
 		JMenu mnAdministracion = new JMenu("Administracion");
 		menuBar.add(mnAdministracion);
 		
-		JMenu mnClientes = new JMenu("Clientes");
-		menuBar.add(mnClientes);
+		JMenu mnPaciente = new JMenu("Paciente");
+		menuBar.add(mnPaciente);
 		
 		JMenuItem mntmregistrar = new JMenuItem("Registrar");
-		mnClientes.add(mntmregistrar);
+		mnPaciente.add(mntmregistrar);
 		
 		JMenuItem mntmConsultar = new JMenuItem("Consultar");
-		mnClientes.add(mntmConsultar);
+		mnPaciente.add(mntmConsultar);
 		
-		JMenu mnProvedores = new JMenu("Provedores");
-		menuBar.add(mnProvedores);
+		JMenu mnMedico = new JMenu("Medico");
+		menuBar.add(mnMedico);
 		
 		JMenuItem menuItem = new JMenuItem("Registrar");
-		mnProvedores.add(menuItem);
+		mnMedico.add(menuItem);
 		
 		JMenuItem menuItem_1 = new JMenuItem("Consultar");
-		mnProvedores.add(menuItem_1);
+		mnMedico.add(menuItem_1);
+		
+		JMenu mnProvedor = new JMenu("Provedor");
+		menuBar.add(mnProvedor);
+		
+		JMenuItem menuItem_2 = new JMenuItem("Registrar");
+		mnProvedor.add(menuItem_2);
+		
+		JMenuItem menuItem_3 = new JMenuItem("Consultar");
+		mnProvedor.add(menuItem_3);
 		
 		JMenu mnAutorizaciones = new JMenu("Autorizaciones");
 		menuBar.add(mnAutorizaciones);
