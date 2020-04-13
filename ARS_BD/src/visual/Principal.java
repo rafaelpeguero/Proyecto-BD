@@ -109,7 +109,7 @@ public class Principal extends JFrame {
 		mntmRegistrar.setIcon(new ImageIcon(Principal.class.getResource("/imagenes/icons8-hogaza-de-pan-30.png")));
 		mntmRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegQueso queso = new RegQueso();
+				RegQueso queso = new RegQueso(); //Ahi se esta creando una instancia de RegQueso
 				queso.setModal(true);
 				queso.setVisible(true);
 			}
@@ -124,7 +124,7 @@ public class Principal extends JFrame {
 		mntmCantidadDeQueoss.setIcon(new ImageIcon(Principal.class.getResource("/imagenes/icons8-carpeta-de-documentos-30.png")));
 		mntmCantidadDeQueoss.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CantQuesos cant = new CantQuesos();
+				CantQuesos cant = new CantQuesos(); //Ahi se esta creando una instancia d
 				cant.setModal(true);
 				cant.setVisible(true);
 			}
