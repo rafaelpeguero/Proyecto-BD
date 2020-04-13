@@ -20,26 +20,7 @@ public class Paciente implements Serializable{
 	private int ID_Municipio;
 	private int ID_Especial;
 	
-	public Paciente(int iD_Paciente, String cedula, String contrasena, String p_Nombre, String s_Nombre,
-			String p_Apellido, String s_Apellido, String f_Nacimiento, String sexo, String tipo_Sangre,
-			String direccion, String telefono1, String telefono2, int iD_Municipio, int iD_Especial) {
-		super();
-		this.ID_Paciente = iD_Paciente;
-		this.Cedula = cedula;
-		this.Contrasena = contrasena;
-		this.P_Nombre = p_Nombre;
-		this.S_Nombre = s_Nombre;
-		this.P_Apellido = p_Apellido;
-		this.S_Apellido = s_Apellido;
-		this.F_Nacimiento = f_Nacimiento;
-		this.Sexo = sexo;
-		this.Tipo_Sangre = tipo_Sangre;
-		this.Direccion = direccion;
-		this.Telefono1 = telefono1;
-		this.Telefono2 = telefono2;
-		this.ID_Municipio = iD_Municipio;
-		this.ID_Especial = iD_Especial;
-	}
+//Falta el constructor de Paciente
 
 	public int getID_Paciente() {
 		return ID_Paciente;

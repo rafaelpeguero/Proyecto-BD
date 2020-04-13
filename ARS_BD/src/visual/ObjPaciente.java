@@ -10,9 +10,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import logico.MainArs;
 import logico.Paciente;
 //import logico.Fabrica;
 //import logico.Factura;
+import logico.Receta_Medico;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -303,8 +305,8 @@ public class ObjPaciente extends JDialog {
 					}
 					//Creando nuevo cliente
 					else {
-						Cliente cliente = new Cliente(txtP_Nombre.getText(),txtCedula.getText(),txtDireccion.getText(),Integer.parseUnsignedInt(txtTelefono.getText()));
-						Fabrica.getInstancias().AddCliente(cliente); // 
+					//	Paciente paciente = new Paciente(null, txtP_Nombre.getText(),txtCedula.getText(),txtDireccion.getText(),txtTelefono.getText(), null, null, null, null, null, null, null, null, null, null);
+						//MainArs.getInstancias().AddPaciente(paciente); // 
 						
 						LimpiarTab();
 						CargarTab();
@@ -321,8 +323,8 @@ public class ObjPaciente extends JDialog {
 					//int index = tabClientes.getSelectedRow();
 					int n = JOptionPane.showConfirmDialog(null, "Desea Eliminar este Cliente?", null,  JOptionPane.OK_CANCEL_OPTION);
 					if( n == JOptionPane.YES_OPTION) {
-						DelFactura(Fabrica.getInstancias().getClientes().get(tabClientes.getSelectedRow()));
-						Fabrica.getInstancias().getClientes().remove(tabClientes.getSelectedRow());
+					//	DelRecetaMedica(MainArs.getInstancias().getPacientes().get(tabPacientes.getSelectedRow()));
+						//Fabrica.getInstancias().getClientes().remove(tabClientes.getSelectedRow());
 						//
 						btnEliminar.setEnabled(false);
 						btnEditar.setEnabled(false);
@@ -353,11 +355,12 @@ public class ObjPaciente extends JDialog {
 						break;
 						
 					case "Guardar":
-						Cliente client = Fabrica.getInstancias().getClientes().get(index);
-						client.setNombre(txtP_Nombre.getText());
-						client.setID(txtCedula.getText());
-						client.setTelefono(Integer.parseInt(txtTelefono.getText()));
-						client.setDireccion(txtDireccion.getText());
+						Paciente paciente = MainArs.getInstancias().getPacientes().get(index);
+						paciente.setP_Nombre(txtP_Nombre.getText());
+					//	paciente.setID(txtCedula.getText());
+						paciente.setTelefono1(txtTelefono.getText());
+						//paciente.setTelefono1(Integer.parseInt(txtTelefono.getText()));
+						paciente.setDireccion(txtDireccion.getText());
 						LimpiarTab();
 						JOptionPane.showMessageDialog(null, "Cliente Modificado", "Aviso", JOptionPane.INFORMATION_MESSAGE, null);
 						CargarTab();
@@ -397,22 +400,22 @@ public class ObjPaciente extends JDialog {
 		tabModelo.setRowCount(0); //Inicializando la tabla en 0
 		fila = new Object[tabModelo.getColumnCount()]; //Creando Arreglo de Objetos por la cantidad de Columnas
 		
-		for(Cliente cliente : Fabrica.getInstancias().getClientes()) {
-			fila[0] = cliente.getNombre();
-			fila[1] = cliente.getID();
-			fila[2] = cliente.getTelefono();
-			fila[3] = cliente.getDireccion();
+		for(Paciente paciente : MainArs.getInstancias().getPacientes()) {
+			fila[0] = paciente.getP_Nombre();
+			//fila[1] = paciente.getID();
+			fila[2] = paciente.getTelefono1();
+			fila[3] = paciente.getDireccion();
 			
 			tabModelo.addRow(fila);
 		}
 		tabClientes.setModel(tabModelo);	
 	}
-	public void DelFactura(Cliente cliente) {
-		Fabrica fabrica = Fabrica.getInstancias();
+	public void DelRecetaMedica(Paciente paciente) {
+		MainArs mainArs = MainArs.getInstancias();
 		
-		for(Factura aux : fabrica.getFacturas()) {
-			if(aux == fabrica.BuscarFacturaByCliente(cliente)) 
-				fabrica.getFacturas().remove(fabrica.BuscarFacturaByCliente(cliente));
+		for(Receta_Medico aux : mainArs.getRecetas_medicas()) {
+			if(aux == mainArs.BuscarRecetaMedicaByPaciente(paciente)) 
+				mainArs.getRecetas_medicas().remove(mainArs.BuscarRecetaMedicaByPaciente(paciente));
 				
 		}
 	}

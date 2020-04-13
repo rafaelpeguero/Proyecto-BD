@@ -286,7 +286,7 @@ public class ObjMedico extends JDialog {
 		
 		//Extra
 		tabClientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		CargarTab();
+		//CargarTab();
 		
 		{
 			JPanel buttonPane = new JPanel();
@@ -303,11 +303,11 @@ public class ObjMedico extends JDialog {
 					}
 					//Creando nuevo cliente
 					else {
-						Cliente cliente = new Cliente(txtP_Nombre.getText(),txtCedula.getText(),txtDireccion.getText(),Integer.parseUnsignedInt(txtTelefono.getText()));
-						Fabrica.getInstancias().AddCliente(cliente); // 
+						//Cliente cliente = new Cliente(txtP_Nombre.getText(),txtCedula.getText(),txtDireccion.getText(),Integer.parseUnsignedInt(txtTelefono.getText()));
+						//Fabrica.getInstancias().AddCliente(cliente); // 
 						
 						LimpiarTab();
-						CargarTab();
+					//	CargarTab();
 						
 					}
 				}
@@ -321,13 +321,13 @@ public class ObjMedico extends JDialog {
 					//int index = tabClientes.getSelectedRow();
 					int n = JOptionPane.showConfirmDialog(null, "Desea Eliminar este Cliente?", null,  JOptionPane.OK_CANCEL_OPTION);
 					if( n == JOptionPane.YES_OPTION) {
-						DelFactura(Fabrica.getInstancias().getClientes().get(tabClientes.getSelectedRow()));
-						Fabrica.getInstancias().getClientes().remove(tabClientes.getSelectedRow());
+						//DelFactura(Fabrica.getInstancias().getClientes().get(tabClientes.getSelectedRow()));
+						//Fabrica.getInstancias().getClientes().remove(tabClientes.getSelectedRow());
 						//
 						btnEliminar.setEnabled(false);
 						btnEditar.setEnabled(false);
 						LimpiarTab();
-						CargarTab();
+					//	CargarTab();
 						
 					}
 				}
@@ -353,7 +353,7 @@ public class ObjMedico extends JDialog {
 						break;
 						
 					case "Guardar":
-						Cliente client = Fabrica.getInstancias().getClientes().get(index);
+						/*Cliente client = Fabrica.getInstancias().getClientes().get(index);
 						client.setNombre(txtP_Nombre.getText());
 						client.setID(txtCedula.getText());
 						client.setTelefono(Integer.parseInt(txtTelefono.getText()));
@@ -363,7 +363,7 @@ public class ObjMedico extends JDialog {
 						CargarTab();
 						btnEditar.setText("Editar");
 						btnEditar.setEnabled(false);
-						btnRegistrar.setEnabled(true);
+						btnRegistrar.setEnabled(true);*/
 						break;
 					}
 					
@@ -393,10 +393,12 @@ public class ObjMedico extends JDialog {
 		txtP_Nombre.setText("");
 		txtP_Nombre.requestFocus();
 	}
+	/*
 	public void CargarTab() {
 		tabModelo.setRowCount(0); //Inicializando la tabla en 0
 		fila = new Object[tabModelo.getColumnCount()]; //Creando Arreglo de Objetos por la cantidad de Columnas
 		
+	
 		for(Cliente cliente : Fabrica.getInstancias().getClientes()) {
 			fila[0] = cliente.getNombre();
 			fila[1] = cliente.getID();
@@ -407,6 +409,7 @@ public class ObjMedico extends JDialog {
 		}
 		tabClientes.setModel(tabModelo);	
 	}
+	
 	public void DelFactura(Cliente cliente) {
 		Fabrica fabrica = Fabrica.getInstancias();
 		
@@ -416,4 +419,5 @@ public class ObjMedico extends JDialog {
 				
 		}
 	}
+	*/
 }

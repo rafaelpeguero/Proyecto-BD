@@ -83,88 +83,90 @@ public class MainArs {
 
 	
 	//METODOS
-	public static Fabrica getInstancias(){
-		if(obj_fabrica == null) {
-			obj_fabrica = new Fabrica();
+	public static MainArs getInstancias(){
+		if(obj_mainArs == null) {
+			obj_mainArs = new MainArs();
 		}
-		return obj_fabrica;
+		return obj_mainArs;
 	}
 
-	public void AddCliente(Cliente cliente) {
+	public void AddPaciente(Paciente paciente) {
 		//Annadiendo al ArrayList
-		clientes.add(cliente);
+		pacientes.add(paciente);
 	}
 
-	public void AddFactura(Factura factura) {
+	public void AddRecetas_Medicas(Receta_Medico receta) {
 		//Annadiendo al ArrayList 
-		facturas.add(factura);
+		recetas_medicas.add(receta);
 	}
 
-	public boolean DelClienteByIndex(int index) {
+	public boolean DelPacienteByIndex(int index) {
 		boolean eliminado = false;
 		//Removiendo del ArrayList
-		if(clientes.remove(index) != null) {
+		if(pacientes.remove(index) != null) {
 			eliminado = true;
 		}
 		return eliminado;
 	}
 
-	public Cliente BuscarClienteByNombre(String nombre) {
-		for(Cliente aux : clientes) {
-			if(aux.getNombre().equalsIgnoreCase(nombre))
+	public Paciente BuscarPacienteByNombre(String nombre) {
+		for(Paciente aux : pacientes) {
+			if(aux.getP_Nombre().equalsIgnoreCase(nombre))
 				return aux;
 		}
 		return null;
 	}
 
-	public Factura BuscarFacturaById(String id) {
-		for(Factura aux : facturas) {
-			if(aux.getID().equalsIgnoreCase(id))
+	public Receta_Medico BuscarRecetaMedicaById(String id) {
+		for(Receta_Medico aux : recetas_medicas) {
+			//if(aux.getID().equalsIgnoreCase(id))
 				return aux;
 		}
 		return null;
 	}
 
-	public Factura BuscarFacturaByCliente(Cliente client) {
-		for(Factura aux : facturas) {
-			if(aux.getFactura_cliente() == client) 
+	public Receta_Medico BuscarRecetaMedicaByPaciente(Paciente paciente) {
+		for(Receta_Medico aux : recetas_medicas) {
+//			if(aux.getFactura_cliente() == client) 
 				return aux;
 			}
 		
 	return null;
 	}
 
-	public void DelClienteByNombre(String nombre) {
-		clientes.remove(BuscarClienteByNombre(nombre));
+	public void DelPacienteByNombre(String nombre) {
+		pacientes.remove(BuscarPacienteByNombre(nombre));
 	}
 
-	public void ModificarCliente(int index, String nombre, String id, String direccion) {
-		clientes.get(index).setNombre(nombre);
-		clientes.get(index).setID(id);
-		clientes.get(index).setDireccion(direccion);
+	public void ModificarPaciente(int index, String nombre, String id, String direccion) {
+		pacientes.get(index).setP_Nombre(nombre);
+		//pacientes.get(index).setID(id);
+		pacientes.get(index).setDireccion(direccion);
 	}
 
-	public Factura getFactura(String id) {
-		for(Factura aux : facturas) {
-			if(aux.getID().equalsIgnoreCase(id))
+	public Receta_Medico getRecetaMedica(String id) {
+		for(Receta_Medico aux : recetas_medicas) {
+	//		if(aux.getID().equalsIgnoreCase(id))
 				return aux;
 		}
 		return null;
 	}
 
-	public void DelFactura(String id) {
-		facturas.remove(BuscarFacturaById(id));
+	public void DelRecetaMedica(String id) {
+		recetas_medicas.remove(BuscarRecetaMedicaById(id));
 	}
 
-	public void DelFacturaByIndex(int index) {
-		facturas.remove(index);
+	public void DelRecetaMedicaByIndex(int index) {
+		recetas_medicas.remove(index);
 	}
 
-	public void DelFacturaByObj(Factura fact) {
-		facturas.remove(fact);
+	public void DelRecetaByObj(Receta_Medico receta) {
+		recetas_medicas.remove(receta);
 	}
 
-	public void SalvarFactura(Factura factura) {
+	
+	/*
+	public void SalvarReceta(Medicamento_Receta receta) {
 		System.out.println("Salvando....");
 		try {
 			
@@ -174,7 +176,7 @@ public class MainArs {
 		ObjectOutputStream oos = new ObjectOutputStream(os);
 		
 		//Factura f = new Factura("aba212", null, null);
-		oos.writeObject(factura);
+		oos.writeObject(eceta);
 		//oos.writeObject(new String("Otro Objeto"));
 		oos.close();
 		os.close();
@@ -184,8 +186,7 @@ public class MainArs {
 			System.out.println(e);
 		}
 		
-		
-	}
+	}*/
 
 	/*public void SalvarFactura(Factura factura) {
 		 Socket s = null;
