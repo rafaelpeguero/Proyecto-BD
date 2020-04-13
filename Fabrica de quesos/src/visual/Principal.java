@@ -94,7 +94,7 @@ public class Principal extends JFrame {
 		setTitle("Fabrica de Quesos");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 922, 617);
+		setBounds(100, 100, 1440, 895);
 		dim = super.getToolkit().getScreenSize();
 		super.setSize(dim.width, dim.height);
 		setLocationRelativeTo(null);
