@@ -41,7 +41,7 @@ public class ObjCentro_Salud extends JDialog {
 	private static final long serialVersionUID = 6597844453066971494L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtP_Nombre;
-	private JTextField txtDireccion;
+	private JTextField txtDrescripcion;
 	private JTable tabClientes;
 	
 	//extra
@@ -95,28 +95,28 @@ public class ObjCentro_Salud extends JDialog {
 			panel.setLayout(null);
 			
 			JLabel lblNombre = new JLabel("Nombre :");
-			lblNombre.setBounds(10, 52, 70, 14);
+			lblNombre.setBounds(10, 63, 111, 14);
 			panel.add(lblNombre);
 			
 			JLabel lblDescripcion = new JLabel("Descripci\u00F3n :");
-			lblDescripcion.setBounds(10, 316, 70, 14);
+			lblDescripcion.setBounds(10, 302, 111, 14);
 			panel.add(lblDescripcion);
 			
 			txtP_Nombre = new JTextField();
-			txtP_Nombre.setBounds(78, 49, 100, 20);
+			txtP_Nombre.setBounds(125, 60, 100, 20);
 			panel.add(txtP_Nombre);
 			txtP_Nombre.setColumns(10);
 			
-			txtDireccion = new JTextField();
-			txtDireccion.addActionListener(new ActionListener() {
+			txtDrescripcion = new JTextField();
+			txtDrescripcion.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					btnRegistrar.requestFocus();
 					btnRegistrar.doClick();
 				}
 			});
-			txtDireccion.setBounds(98, 315, 336, 20);
-			panel.add(txtDireccion);
-			txtDireccion.setColumns(10);
+			txtDrescripcion.setBounds(125, 299, 336, 20);
+			panel.add(txtDrescripcion);
+			txtDrescripcion.setColumns(10);
 			
 			//textP_Apellido = new JTextField();
 			//textP_Apellido.setBounds(78, 115, 100, 20);
@@ -124,33 +124,28 @@ public class ObjCentro_Salud extends JDialog {
 			//textP_Apellido.setColumns(10);
 			
 			JLabel lblIdMunicipio = new JLabel("ID Municipio :");
-			lblIdMunicipio.setBounds(10, 250, 70, 14);
+			lblIdMunicipio.setBounds(10, 223, 111, 14);
 			panel.add(lblIdMunicipio);
 			
 			txtID_Municipio = new JTextField();
-			txtID_Municipio.setBounds(94, 248, 40, 20);
+			txtID_Municipio.setBounds(125, 220, 40, 20);
 			panel.add(txtID_Municipio);
 			txtID_Municipio.setColumns(10);
 			
 			lblIdCentro_Salud = new JLabel("ID Centro :");
-			lblIdCentro_Salud.setBounds(10, 184, 70, 14);
+			lblIdCentro_Salud.setBounds(10, 144, 111, 14);
 			panel.add(lblIdCentro_Salud);
 			
 			txtID_Centro = new JTextField();
-			txtID_Centro.setBounds(78, 181, 100, 20);
+			txtID_Centro.setBounds(125, 144, 100, 20);
 			panel.add(txtID_Centro);
 			txtID_Centro.setColumns(10);
 			
 			JLabel label = new JLabel("");
-			label.setBounds(-56, -266, 1274, 850);
+			label.setBounds(20, -266, 1274, 850);
 			panel.add(label);
 			label.setIcon(new ImageIcon(ObjCentro_Salud.class.getResource("/imagenes/centro_icono3.png")));
 			label.setHorizontalAlignment(SwingConstants.CENTER);
-			
-			txtID_Centro = new JTextField();
-			txtID_Centro.setBounds(78, 181, 100, 20);
-			panel.add(txtID_Centro);
-			txtID_Centro.setColumns(10);
 		}
 		
 		JPanel panel = new JPanel();
@@ -179,7 +174,7 @@ public class ObjCentro_Salud extends JDialog {
 		
 		scrollPane.setViewportView(tabClientes);
 		///extras
-		String[] colnStr = {"Nombre" , "Cédula", "Telefono", "Dirección"};
+		String[] colnStr = {"ID" , "Nombre", "ID Municipio", "Descripción"};
 		tabModelo = new DefaultTableModel(); // Creando tabla 0x0
 		tabModelo.setColumnIdentifiers(colnStr);
 		tabClientes.getTableHeader().setResizingAllowed(false);
@@ -208,8 +203,13 @@ public class ObjCentro_Salud extends JDialog {
 					}
 					//Creando nuevo cliente
 					else {
-					//	Centro_Salud centro = new Centro_Salud(null, txtP_Nombre.getText(),null, txtID_Centro.getText());
-					//	MainArs.getInstancias().AddCentroSalud(centro); // 
+						Centro_Salud centro = new Centro_Salud(
+								Integer.parseInt(txtID_Centro.getText()), 
+								txtP_Nombre.getText(),
+								Integer.parseInt(txtID_Municipio.getText()), 
+								txtDrescripcion.getText());
+						
+						MainArs.getInstancias().AddCentroSalud(centro); // 
 						
 						LimpiarTab();
 						CargarTab();
@@ -223,11 +223,11 @@ public class ObjCentro_Salud extends JDialog {
 			//btnEliminar.setEnabled(false);
 			btnEliminar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					//int index = tabClientes.getSelectedRow();
-					int n = JOptionPane.showConfirmDialog(null, "Desea Eliminar este Cliente?", null,  JOptionPane.OK_CANCEL_OPTION);
+					int index = tabClientes.getSelectedRow();
+					int n = JOptionPane.showConfirmDialog(null, "Desea Eliminar este Centro?", null,  JOptionPane.OK_CANCEL_OPTION);
 					if( n == JOptionPane.YES_OPTION) {
 //						DelFactura(Fabrica.getInstancias().getClientes().get(tabClientes.getSelectedRow()));
-	//					Fabrica.getInstancias().getClientes().remove(tabClientes.getSelectedRow());
+						MainArs.getInstancias().getCentros_salud().remove(tabClientes.getSelectedRow());
 						//
 						btnEliminar.setEnabled(false);
 						btnEditar.setEnabled(false);
@@ -250,21 +250,22 @@ public class ObjCentro_Salud extends JDialog {
 					case "Editar":
 						btnEliminar.setEnabled(false);
 						btnRegistrar.setEnabled(false);
-						txtP_Nombre.setText(tabClientes.getValueAt(index, 0).toString());
-						//txtCedula.setText(tabClientes.getValueAt(index, 1).toString());
-						//txtTelefono.setText(tabClientes.getValueAt(index, 2).toString());
-						txtDireccion.setText(tabClientes.getValueAt(index,3).toString());
+						txtID_Centro.setText(tabClientes.getValueAt(index, 0).toString());
+						txtP_Nombre.setText(tabClientes.getValueAt(index, 1).toString());
+						txtID_Municipio.setText(tabClientes.getValueAt(index, 2).toString());
+						txtDrescripcion.setText(tabClientes.getValueAt(index,3).toString());
 						btnEditar.setText("Guardar");
 						break;
 						
 					case "Guardar":
 						Centro_Salud centro = MainArs.getInstancias().getCentros_salud().get(index);
-						centro.setNombre(txtP_Nombre.getText());
+						
 						centro.setID_Centro_Salud(Integer.parseInt(txtID_Centro.getText()));
-						//client.setTelefono(Integer.parseInt(txtTelefono.getText()));
-						//centro.setDireccion(txtDireccion.getText());
+						centro.setNombre(txtP_Nombre.getText());
+						centro.setID_Municipio(Integer.parseInt(txtID_Municipio.getText()));
+						centro.setDescripcion(txtDrescripcion.getText());
 						LimpiarTab();
-						JOptionPane.showMessageDialog(null, "Cliente Modificado", "Aviso", JOptionPane.INFORMATION_MESSAGE, null);
+						JOptionPane.showMessageDialog(null, "Centro Modificado", "Aviso", JOptionPane.INFORMATION_MESSAGE, null);
 						CargarTab();
 						btnEditar.setText("Editar");
 						btnEditar.setEnabled(false);
@@ -289,24 +290,24 @@ public class ObjCentro_Salud extends JDialog {
 		}
 	}
 	public void LimpiarTab() {
-		//txtCedula.setText("");
-		//txtCedula.requestFocus();
-		//txtTelefono.setText("");
-		//txtTelefono.requestFocus();
-		txtDireccion.setText("");
-		txtDireccion.requestFocus();
+		txtID_Centro.setText("");
+		txtID_Centro.requestFocus();
 		txtP_Nombre.setText("");
 		txtP_Nombre.requestFocus();
+		txtID_Municipio.setText("");
+		txtID_Municipio.requestFocus();
+		txtDrescripcion.setText("");
+		txtDrescripcion.requestFocus();
 	}
 	public void CargarTab() {
 		tabModelo.setRowCount(0); //Inicializando la tabla en 0
 		fila = new Object[tabModelo.getColumnCount()]; //Creando Arreglo de Objetos por la cantidad de Columnas
 		
 		for(Centro_Salud centros : MainArs.getInstancias().getCentros_salud()) {
-			fila[0] = centros.getNombre();
-			fila[1] = centros.getID_Centro_Salud();
-			//fila[2] = centros.getTelefono();
-			//fila[3] = centros.getDireccion();
+			fila[0] = centros.getID_Centro_Salud();
+			fila[1] = centros.getNombre();
+			fila[2] = centros.getID_Municipio();
+			fila[3] = centros.getDescripcion();
 			
 			tabModelo.addRow(fila);
 		}

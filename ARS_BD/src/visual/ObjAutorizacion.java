@@ -96,7 +96,7 @@ public class ObjAutorizacion extends JDialog {
 		setResizable(false);
 		
 		
-		setTitle("Manejador De Pacientes");
+		setTitle("Autorizacion");
 		setBounds(100, 100, 852, 769);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

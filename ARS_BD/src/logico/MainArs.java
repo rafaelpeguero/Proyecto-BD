@@ -171,6 +171,10 @@ public class MainArs {
 		//Annadiendo al ArrayList
 		staffs.add(paciente);
 	}
+	public void AddCentroSalud(Centro_Salud centro) {
+		//Annadiendo al ArrayList
+		centros_salud.add(centro);
+	}
 	public void AddAutorizacionMedicina(Solicitacion_Medicamento paciente) {
 		//Annadiendo al ArrayList
 		autorizaciones_Medicina.add(paciente);

@@ -67,7 +67,7 @@ public class Principal_ {
 		JMenuItem mntmregistrar = new JMenuItem("Registrar");
 		mntmregistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ObjPaciente obj = new ObjPaciente();
+				ObjCentro_Salud obj = new ObjCentro_Salud();
 				obj.setVisible(true);
 				obj.setLocationRelativeTo(null);
 				
@@ -138,28 +138,28 @@ public class Principal_ {
 		});
 		mnStaff.add(mntmConsultar_1);
 		
-		JMenu mnProvedor = new JMenu("Provedor");
-		menuBar.add(mnProvedor);
+		JMenu mnCentroSalud = new JMenu("Centro Salud");
+		menuBar.add(mnCentroSalud);
 		
 		JMenuItem menuItem_2 = new JMenuItem("Registrar");
 		menuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ObjProvedor obj = new ObjProvedor();
+				ObjCentro_Salud obj = new ObjCentro_Salud();
 				obj.setVisible(true);
 				obj.setLocationRelativeTo(null);
 			}
 		});
-		mnProvedor.add(menuItem_2);
+		mnCentroSalud.add(menuItem_2);
 		
 		JMenuItem menuItem_3 = new JMenuItem("Consultar");
 		menuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Obj_C_Provedor obj = new Obj_C_Provedor();
+				Obj_C_CentroSalud obj = new Obj_C_CentroSalud();
 				obj.setVisible(true);
 				obj.setLocationRelativeTo(null);
 			}
 		});
-		mnProvedor.add(menuItem_3);
+		mnCentroSalud.add(menuItem_3);
 		
 		JMenu mnAutorizaciones = new JMenu("Autorizaciones");
 		menuBar.add(mnAutorizaciones);
