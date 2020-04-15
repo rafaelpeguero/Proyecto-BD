@@ -11,6 +11,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import logico.MainArs;
+import logico.Medicos;
 import logico.Paciente;
 //import logico.Fabrica;
 //import logico.Factura;
@@ -75,7 +76,7 @@ public class Obj_C_Medico extends JDialog {
 		setResizable(false);
 		
 		
-		setTitle("Manejador De Pacientes");
+		setTitle("Consulta de Medicos");
 		setBounds(100, 100, 1280, 800);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -114,12 +115,10 @@ public class Obj_C_Medico extends JDialog {
 				"S_Apellido" , 
 				"Nacimiento", 
 				"Sexo",
-				"Tipo Sangre",
 				"Dirección",
 				"Telefono_1",
 				"Telefono_2",
 				"ID_Municipio",
-				"ID_Especial"
 				};
 		
 		tabModelo = new DefaultTableModel(); // Creando tabla 0x0
@@ -147,7 +146,7 @@ public class Obj_C_Medico extends JDialog {
 					int n = JOptionPane.showConfirmDialog(null, "Desea Eliminar este Paciente?", null,  JOptionPane.OK_CANCEL_OPTION);
 					if( n == JOptionPane.YES_OPTION) {
 						//DelPaciente(MainArs.getInstancias().getPacientes().get(tabPacientes.getSelectedRow()));  --> Para eliminar una receta
-						MainArs.getInstancias().getPacientes().remove(tabPacientes.getSelectedRow());
+						MainArs.getInstancias().getMedicos().remove(tabPacientes.getSelectedRow());
 						//
 						btnEliminar.setEnabled(false);
 						btnEditar.setEnabled(false);
@@ -163,7 +162,7 @@ public class Obj_C_Medico extends JDialog {
 			btnEditar.setEnabled(false);
 			btnEditar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					ObjPaciente o = new ObjPaciente();
+					ObjMedico o = new ObjMedico();
 					o.setVisible(true);
 					o.setLocationRelativeTo(null);
 					dispose();
@@ -190,8 +189,8 @@ public class Obj_C_Medico extends JDialog {
 		tabModelo.setRowCount(0); //Inicializando la tabla en 0
 		fila = new Object[tabModelo.getColumnCount()]; //Creando Arreglo de Objetos por la cantidad de Columnas
 		
-		for(Paciente paciente : MainArs.getInstancias().getPacientes()) {
-			fila[0] = paciente.getID_Paciente();
+		for(Medicos paciente : MainArs.getInstancias().getMedicos()) {
+			fila[0] = paciente.getID_Medico();
 			fila[1] = paciente.getCedula();
 			fila[2] = paciente.getP_Nombre();
 			fila[3] = paciente.getS_Nombre();
@@ -199,14 +198,11 @@ public class Obj_C_Medico extends JDialog {
 			fila[5] = paciente.getS_Apellido();
 			fila[6] = paciente.getF_Nacimiento();
 			fila[7] = paciente.getSexo();
-			fila[8] = paciente.getTipo_Sangre();
-			fila[9] = paciente.getDireccion();
-			fila[10] = paciente.getTelefono1();
-			fila[11] = paciente.getTelefono2();
-			fila[12] = paciente.getID_Municipio();
-			fila[13] = paciente.getID_Especial();
+			fila[8] = paciente.getDireccion();
+			fila[9] = paciente.getTelefono1();
+			fila[10] = paciente.getTelefono2();
+			fila[11] = paciente.getID_Municipio();
 
-			
 			tabModelo.addRow(fila);
 		}
 		tabPacientes.setModel(tabModelo);	

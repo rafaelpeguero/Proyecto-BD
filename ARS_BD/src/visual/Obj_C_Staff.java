@@ -15,6 +15,7 @@ import logico.Paciente;
 //import logico.Fabrica;
 //import logico.Factura;
 import logico.Receta_Medico;
+import logico.Staff;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -75,7 +76,7 @@ public class Obj_C_Staff extends JDialog {
 		setResizable(false);
 		
 		
-		setTitle("Manejador De Pacientes");
+		setTitle("Consulta de Staff");
 		setBounds(100, 100, 1280, 800);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -119,7 +120,6 @@ public class Obj_C_Staff extends JDialog {
 				"Telefono_1",
 				"Telefono_2",
 				"ID_Municipio",
-				"ID_Especial"
 				};
 		
 		tabModelo = new DefaultTableModel(); // Creando tabla 0x0
@@ -163,7 +163,7 @@ public class Obj_C_Staff extends JDialog {
 			btnEditar.setEnabled(false);
 			btnEditar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					ObjPaciente o = new ObjPaciente();
+					ObjStaff o = new ObjStaff();
 					o.setVisible(true);
 					o.setLocationRelativeTo(null);
 					dispose();
@@ -190,8 +190,8 @@ public class Obj_C_Staff extends JDialog {
 		tabModelo.setRowCount(0); //Inicializando la tabla en 0
 		fila = new Object[tabModelo.getColumnCount()]; //Creando Arreglo de Objetos por la cantidad de Columnas
 		
-		for(Paciente paciente : MainArs.getInstancias().getPacientes()) {
-			fila[0] = paciente.getID_Paciente();
+		for(Staff paciente : MainArs.getInstancias().getStaffs()) {
+			fila[0] = paciente.getID_Staff();
 			fila[1] = paciente.getCedula();
 			fila[2] = paciente.getP_Nombre();
 			fila[3] = paciente.getS_Nombre();
@@ -204,8 +204,6 @@ public class Obj_C_Staff extends JDialog {
 			fila[10] = paciente.getTelefono1();
 			fila[11] = paciente.getTelefono2();
 			fila[12] = paciente.getID_Municipio();
-			fila[13] = paciente.getID_Especial();
-
 			
 			tabModelo.addRow(fila);
 		}

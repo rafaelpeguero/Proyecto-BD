@@ -15,6 +15,7 @@ import logico.Paciente;
 //import logico.Fabrica;
 //import logico.Factura;
 import logico.Receta_Medico;
+import logico.Staff;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -69,9 +70,9 @@ public class ObjStaff extends JDialog {
 	private JLabel lblTelefono;
 	private JTextField txtTelefono2;
 	private JTextField txtID_Municipio;
-	private JTextField txtID_Especial;
 	private JLabel lblIdPaciente;
-	private JTextField txtID_Paciente;
+	private JTextField txtID_Staff;
+	private JLabel lblIdStaff;
 
 	/**
 	 * Launch the application.
@@ -96,7 +97,7 @@ public class ObjStaff extends JDialog {
 		setResizable(false);
 		
 		
-		setTitle("Manejador De Pacientes");
+		setTitle("Manejador Staff");
 		setBounds(100, 100, 852, 769);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -231,29 +232,24 @@ public class ObjStaff extends JDialog {
 			panel.add(txtID_Municipio);
 			txtID_Municipio.setColumns(10);
 			
-			JLabel lblIdEspecial = new JLabel("ID Especial :");
-			lblIdEspecial.setBounds(10, 310, 100, 14);
-			panel.add(lblIdEspecial);
 			
-			txtID_Especial = new JTextField();
-			txtID_Especial.setBounds(120, 304, 40, 20);
-			panel.add(txtID_Especial);
-			txtID_Especial.setColumns(10);
-			
-			lblIdPaciente = new JLabel("ID Paciente :");
-			lblIdPaciente.setBounds(10, 94, 100, 14);
+			lblIdPaciente = new JLabel("ID Staff");
 			panel.add(lblIdPaciente);
 			
-			txtID_Paciente = new JTextField();
-			txtID_Paciente.setBounds(120, 91, 100, 20);
-			panel.add(txtID_Paciente);
-			txtID_Paciente.setColumns(10);
+			txtID_Staff = new JTextField();
+			txtID_Staff.setBounds(120, 91, 100, 20);
+			panel.add(txtID_Staff);
+			txtID_Staff.setColumns(10);
 			
 			JLabel label = new JLabel("");
 			label.setIcon(new ImageIcon(ObjStaff.class.getResource("/imagenes/icoPaciente.jpg")));
 			label.setHorizontalAlignment(SwingConstants.CENTER);
 			label.setBounds(48, -163, 1274, 850);
 			panel.add(label);
+			
+			lblIdStaff = new JLabel("ID Staff");
+			lblIdStaff.setBounds(10, 97, 46, 14);
+			panel.add(lblIdStaff);
 		}
 		
 		JPanel panel = new JPanel();
@@ -309,8 +305,8 @@ public class ObjStaff extends JDialog {
 					//Creando nuevo cliente
 					else {
 						@SuppressWarnings("deprecation")
-						Paciente paciente = new Paciente( 
-								Integer.parseInt(txtID_Paciente.getText()),
+						Staff staff = new Staff( 
+								Integer.parseInt(txtID_Staff.getText()),
 								txtCedula.getText(),
 								passwordField.getText(),
 								txtP_Nombre.getText(),
@@ -323,11 +319,10 @@ public class ObjStaff extends JDialog {
 								txtDireccion.getText(),
 								txtTelefono.getText(),
 								txtTelefono2.getText(),
-								Integer.parseInt(txtID_Municipio.getText()),
-								Integer.parseInt(txtID_Especial.getText())
+								Integer.parseInt(txtID_Municipio.getText())
 								);
 						
-						MainArs.getInstancias().AddPaciente(paciente); // 
+						MainArs.getInstancias().AddStaff(staff); // 
 						
 						LimpiarTab();
 						CargarTab();
@@ -342,7 +337,7 @@ public class ObjStaff extends JDialog {
 			btnEliminar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					int index = tabPacientes.getSelectedRow();
-					int n = JOptionPane.showConfirmDialog(null, "Desea Eliminar este Paciente?", null,  JOptionPane.OK_CANCEL_OPTION);
+					int n = JOptionPane.showConfirmDialog(null, "Desea Eliminar este ?", null,  JOptionPane.OK_CANCEL_OPTION);
 					if( n == JOptionPane.YES_OPTION) {
 						//DelPaciente(MainArs.getInstancias().getPacientes().get(tabPacientes.getSelectedRow()));  --> Para eliminar una receta
 						MainArs.getInstancias().getPacientes().remove(tabPacientes.getSelectedRow());
@@ -377,9 +372,8 @@ public class ObjStaff extends JDialog {
 						break;
 						
 					case "Guardar":
-						Paciente paciente = MainArs.getInstancias().getPacientes().get(index);
-						
-						paciente.setID_Paciente(Integer.parseInt(txtID_Paciente.getText()));
+						Staff paciente = MainArs.getInstancias().getStaffs().get(index);
+						paciente.setID_Staff(Integer.parseInt(txtID_Staff.getText()));
 						paciente.setCedula(txtCedula.getText());
 						paciente.setContrasena(passwordField.getText());
 						paciente.setP_Nombre(txtP_Nombre.getText());
@@ -392,7 +386,6 @@ public class ObjStaff extends JDialog {
 						paciente.setTelefono1(txtTelefono.getText());
 						paciente.setTelefono2(txtTelefono2.getText());
 						paciente.setID_Municipio(Integer.parseInt(txtID_Municipio.getText()));
-						paciente.setID_Especial(Integer.parseInt(txtID_Especial.getText()));
 						
 						LimpiarTab();
 						JOptionPane.showMessageDialog(null, "Paciente Modificado", "Aviso", JOptionPane.INFORMATION_MESSAGE, null);
@@ -420,8 +413,8 @@ public class ObjStaff extends JDialog {
 		}
 	}
 	public void LimpiarTab() {
-		txtID_Paciente.setText("");
-		txtID_Paciente.requestFocus();
+		txtID_Staff.setText("");
+		txtID_Staff.requestFocus();
 		txtCedula.setText("");
 		txtCedula.requestFocus();
 		passwordField.setText("");
@@ -448,17 +441,15 @@ public class ObjStaff extends JDialog {
 		txtTelefono2.requestFocus();
 		txtID_Municipio.setText("");
 		txtID_Municipio.requestFocus();
-		txtID_Especial.setText("");
-		txtID_Especial.requestFocus();
 		
 	}
 	public void CargarTab() {
 		tabModelo.setRowCount(0); //Inicializando la tabla en 0
 		fila = new Object[tabModelo.getColumnCount()]; //Creando Arreglo de Objetos por la cantidad de Columnas
 		
-		for(Paciente paciente : MainArs.getInstancias().getPacientes()) {
+		for(Staff paciente : MainArs.getInstancias().getStaffs()) {
 			fila[0] = paciente.getP_Nombre();
-			fila[1] = paciente.getID_Paciente();
+			fila[1] = paciente.getID_Staff();
 			fila[2] = paciente.getTelefono1();
 			fila[3] = paciente.getDireccion();
 			

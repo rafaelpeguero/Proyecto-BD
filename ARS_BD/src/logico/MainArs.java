@@ -13,13 +13,13 @@ public class MainArs {
 
 	public ArrayList <Paciente> pacientes;
 	public ArrayList <Medicos> medicos;
-	//Falta agregar mas 
-	
+	public ArrayList <Staff> staffs;
+	//public ArrayList <Provedor> provedores;
+	public ArrayList <Solicitacion_Medicamento> autorizaciones_Medicina;
+	public ArrayList <Solicitacion_Servicio> autorizaciones_Servicio;
 	public ArrayList <Centro_Salud> centros_salud;
 	public ArrayList <Municipio> municipios;
 	public ArrayList <Provincia> provincias;
-	
-	//public Inventario quesos;
 	public ArrayList <Receta_Medico> recetas_medicas;
 	
 	static MainArs obj_mainArs;  // Estancia de la ARS
@@ -31,62 +31,125 @@ public class MainArs {
 		// ARRAY LISTS P CLIENTES Y FACTURAS
 		pacientes = new ArrayList<Paciente>();
 		medicos = new ArrayList<Medicos>();
+		staffs = new ArrayList<Staff>();
+		autorizaciones_Medicina = new ArrayList<Solicitacion_Medicamento>();
+		autorizaciones_Servicio = new ArrayList<Solicitacion_Servicio>();
 		centros_salud = new ArrayList<Centro_Salud>();
 		municipios = new ArrayList<Municipio>();
 		provincias = new ArrayList<Provincia>();
-
-	  //	quesos = new Inventario();  
+		recetas_medicas = new ArrayList<Receta_Medico>();	
 	}
 
+	
+	
 	public ArrayList<Paciente> getPacientes() {
 		return pacientes;
 	}
+
+
 
 	public void setPacientes(ArrayList<Paciente> pacientes) {
 		this.pacientes = pacientes;
 	}
 
+
+
 	public ArrayList<Medicos> getMedicos() {
 		return medicos;
 	}
+
+
 
 	public void setMedicos(ArrayList<Medicos> medicos) {
 		this.medicos = medicos;
 	}
 
+
+
+	public ArrayList<Staff> getStaffs() {
+		return staffs;
+	}
+
+
+
+	public void setStaffs(ArrayList<Staff> staffs) {
+		this.staffs = staffs;
+	}
+
+
+
+	public ArrayList<Solicitacion_Medicamento> getAutorizaciones_Medicina() {
+		return autorizaciones_Medicina;
+	}
+
+
+
+	public void setAutorizaciones_Medicina(ArrayList<Solicitacion_Medicamento> autorizaciones_Medicina) {
+		this.autorizaciones_Medicina = autorizaciones_Medicina;
+	}
+
+
+
+	public ArrayList<Solicitacion_Servicio> getAutorizaciones_Servicio() {
+		return autorizaciones_Servicio;
+	}
+
+
+
+	public void setAutorizaciones_Servicio(ArrayList<Solicitacion_Servicio> autorizaciones_Servicio) {
+		this.autorizaciones_Servicio = autorizaciones_Servicio;
+	}
+
+
+
 	public ArrayList<Centro_Salud> getCentros_salud() {
 		return centros_salud;
 	}
+
+
 
 	public void setCentros_salud(ArrayList<Centro_Salud> centros_salud) {
 		this.centros_salud = centros_salud;
 	}
 
+
+
 	public ArrayList<Municipio> getMunicipios() {
 		return municipios;
 	}
+
+
 
 	public void setMunicipios(ArrayList<Municipio> municipios) {
 		this.municipios = municipios;
 	}
 
+
+
 	public ArrayList<Provincia> getProvincias() {
 		return provincias;
 	}
+
+
 
 	public void setProvincias(ArrayList<Provincia> provincias) {
 		this.provincias = provincias;
 	}
 
+
+
 	public ArrayList<Receta_Medico> getRecetas_medicas() {
 		return recetas_medicas;
 	}
+
+
 
 	public void setRecetas_medicas(ArrayList<Receta_Medico> recetas_medicas) {
 		this.recetas_medicas = recetas_medicas;
 	}
 
-	
+
+
 	//METODOS
 	public static MainArs getInstancias(){
 		if(obj_mainArs == null) {
@@ -99,7 +162,25 @@ public class MainArs {
 		//Annadiendo al ArrayList
 		pacientes.add(paciente);
 	}
-
+	
+	public void AddMedico(Medicos medico) {
+		//Annadiendo al ArrayList
+		medicos.add(medico);
+	}
+	public void AddStaff(Staff paciente) {
+		//Annadiendo al ArrayList
+		staffs.add(paciente);
+	}
+	public void AddAutorizacionMedicina(Solicitacion_Medicamento paciente) {
+		//Annadiendo al ArrayList
+		autorizaciones_Medicina.add(paciente);
+	}
+	public void AddAutorizacionServicio(Solicitacion_Servicio paciente) {
+		//Annadiendo al ArrayList
+		autorizaciones_Servicio.add(paciente);
+	}
+	
+	
 	public void AddRecetas_Medicas(Receta_Medico receta) {
 		//Annadiendo al ArrayList 
 		recetas_medicas.add(receta);
