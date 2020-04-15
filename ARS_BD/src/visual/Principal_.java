@@ -11,10 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Principal_ {
 
 	private JFrame frmArsPucmm;
+	
 
 	/**
 	 * Launch the application.
@@ -36,6 +39,7 @@ public class Principal_ {
 	 * Create the application.
 	 */
 	public Principal_() {
+		
 		initialize();
 	}
 
@@ -47,7 +51,7 @@ public class Principal_ {
 		frmArsPucmm.setIconImage(Toolkit.getDefaultToolkit().getImage(Principal_.class.getResource("/imagenes/faviconnew.png")));
 		frmArsPucmm.setTitle("ARS PUCMM\r\n");
 		frmArsPucmm.setResizable(false);
-		frmArsPucmm.setBounds(100, 100, 1280, 900);
+		frmArsPucmm.setBounds(100, 100, 1400, 900);
 		frmArsPucmm.setLocationRelativeTo(null);
 		frmArsPucmm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -61,9 +65,31 @@ public class Principal_ {
 		menuBar.add(mnPaciente);
 		
 		JMenuItem mntmregistrar = new JMenuItem("Registrar");
+		mntmregistrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ObjPaciente obj = new ObjPaciente();
+				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				
+				
+				
+			}
+		});
 		mnPaciente.add(mntmregistrar);
 		
 		JMenuItem mntmConsultar = new JMenuItem("Consultar");
+		mntmConsultar.addActionListener(new ActionListener() {
+			
+
+			public void actionPerformed(ActionEvent e) {
+				ObjConsultaPaciente obj_c_p = new ObjConsultaPaciente();
+				obj_c_p.setVisible(true);
+				obj_c_p.setLocationRelativeTo(null);
+	
+				
+				
+			}
+		});
 		mnPaciente.add(mntmConsultar);
 		
 		JMenu mnMedico = new JMenu("Medico");
@@ -74,6 +100,15 @@ public class Principal_ {
 		
 		JMenuItem menuItem_1 = new JMenuItem("Consultar");
 		mnMedico.add(menuItem_1);
+		
+		JMenu mnStaff = new JMenu("Staff");
+		menuBar.add(mnStaff);
+		
+		JMenuItem mntmRegistrar = new JMenuItem("Registrar");
+		mnStaff.add(mntmRegistrar);
+		
+		JMenuItem mntmConsultar_1 = new JMenuItem("Consultar");
+		mnStaff.add(mntmConsultar_1);
 		
 		JMenu mnProvedor = new JMenu("Provedor");
 		menuBar.add(mnProvedor);

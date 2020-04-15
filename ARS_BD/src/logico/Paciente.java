@@ -19,12 +19,47 @@ public class Paciente implements Serializable{
 	private String Telefono2;
 	private int ID_Municipio;
 	private int ID_Especial;
-	
-//Falta el constructor de Paciente
 
+
+
+	public Paciente(
+			int iD_Paciente, 
+			String cedula, 
+			String contrasena, 
+			String p_Nombre, 
+			String s_Nombre,
+			String p_Apellido, 
+			String s_Apellido, 
+			String f_Nacimiento, 
+			String sexo, 
+			String tipo_Sangre,
+			String direccion, 
+			String telefono1, 
+			String telefono2, 
+			int iD_Municipio, 
+			int iD_Especial) {
+		super();
+		ID_Paciente = iD_Paciente;
+		Cedula = cedula;
+		Contrasena = contrasena;
+		P_Nombre = p_Nombre;
+		S_Nombre = s_Nombre;
+		P_Apellido = p_Apellido;
+		S_Apellido = s_Apellido;
+		F_Nacimiento = f_Nacimiento;
+		Sexo = sexo;
+		Tipo_Sangre = tipo_Sangre;
+		Direccion = direccion;
+		Telefono1 = telefono1;
+		Telefono2 = telefono2;
+		ID_Municipio = iD_Municipio;
+		ID_Especial = iD_Especial;
+	}	
+	
 	public int getID_Paciente() {
 		return ID_Paciente;
 	}
+
 
 	public void setID_Paciente(int iD_Paciente) {
 		ID_Paciente = iD_Paciente;

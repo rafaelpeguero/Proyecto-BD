@@ -1,5 +1,8 @@
 package logico;
 
+
+// Esta clase es el centro de todo
+
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.InetAddress;
@@ -10,6 +13,8 @@ public class MainArs {
 
 	public ArrayList <Paciente> pacientes;
 	public ArrayList <Medicos> medicos;
+	//Falta agregar mas 
+	
 	public ArrayList <Centro_Salud> centros_salud;
 	public ArrayList <Municipio> municipios;
 	public ArrayList <Provincia> provincias;
@@ -117,17 +122,17 @@ public class MainArs {
 		return null;
 	}
 
-	public Receta_Medico BuscarRecetaMedicaById(String id) {
+	public Receta_Medico BuscarRecetaMedicaById(int id) { //Falta prueba
 		for(Receta_Medico aux : recetas_medicas) {
-			//if(aux.getID().equalsIgnoreCase(id))
+			if(aux.getID_Receta() == id)
 				return aux;
 		}
 		return null;
 	}
 
-	public Receta_Medico BuscarRecetaMedicaByPaciente(Paciente paciente) {
+	public Receta_Medico BuscarRecetaMedicaByPaciente(Paciente paciente) {//Falta prueba
 		for(Receta_Medico aux : recetas_medicas) {
-//			if(aux.getFactura_cliente() == client) 
+		if(aux.getID_Paciente() == paciente.getID_Paciente()) 
 				return aux;
 			}
 		
@@ -138,21 +143,48 @@ public class MainArs {
 		pacientes.remove(BuscarPacienteByNombre(nombre));
 	}
 
-	public void ModificarPaciente(int index, String nombre, String id, String direccion) {
-		pacientes.get(index).setP_Nombre(nombre);
-		//pacientes.get(index).setID(id);
-		pacientes.get(index).setDireccion(direccion);
+	public void ModificarPaciente(int index,
+	 int 	ID_Paciente,
+	 String Cedula,
+	 String Contrasena,
+	 String P_Nombre,
+	 String S_Nombre,
+	 String P_Apellido,
+	 String S_Apellido,
+	 String F_Nacimiento,
+	 String Sexo,
+	 String Tipo_Sangre,
+	 String Direccion,
+	 String Telefono1,
+	 String Telefono2,
+	 int ID_Municipio,
+	 int ID_Especial) {
+		pacientes.get(index).setID_Paciente(ID_Paciente);
+		pacientes.get(index).setCedula(Cedula);
+		pacientes.get(index).setContrasena(Contrasena);
+		pacientes.get(index).setP_Nombre(P_Nombre);
+		pacientes.get(index).setS_Nombre(S_Nombre);
+		pacientes.get(index).setP_Apellido(P_Apellido);
+		pacientes.get(index).setS_Apellido(S_Apellido);
+		pacientes.get(index).setF_Nacimiento(F_Nacimiento);
+		pacientes.get(index).setSexo(Sexo);
+		pacientes.get(index).setTipo_Sangre(Tipo_Sangre);
+		pacientes.get(index).setDireccion(Direccion);
+		pacientes.get(index).setTelefono1(Telefono1);
+		pacientes.get(index).setTelefono2(Telefono2);
+		pacientes.get(index).setID_Municipio(ID_Municipio);
+		pacientes.get(index).setID_Especial(ID_Especial);
 	}
 
-	public Receta_Medico getRecetaMedica(String id) {
+	public Receta_Medico getRecetaMedica(int id) {
 		for(Receta_Medico aux : recetas_medicas) {
-	//		if(aux.getID().equalsIgnoreCase(id))
+	 	if(aux.getID_Receta() == id)
 				return aux;
 		}
 		return null;
 	}
 
-	public void DelRecetaMedica(String id) {
+	public void DelRecetaMedica(int id) {
 		recetas_medicas.remove(BuscarRecetaMedicaById(id));
 	}
 
