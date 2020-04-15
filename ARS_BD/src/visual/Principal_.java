@@ -167,7 +167,7 @@ public class Principal_ {
 		JMenuItem mntmRealizar = new JMenuItem("Realizar");
 		mntmRealizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Obj_C_Autorizacion obj = new Obj_C_Autorizacion();
+				ObjAutorizacion obj = new ObjAutorizacion();
 				obj.setVisible(true);
 				obj.setLocationRelativeTo(null);
 			}

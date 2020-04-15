@@ -32,6 +32,9 @@ import javax.swing.JPasswordField;
 import java.awt.Label;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import java.awt.Checkbox;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class ObjAutorizacion extends JDialog {
 
@@ -40,11 +43,6 @@ public class ObjAutorizacion extends JDialog {
 	 */
 	private static final long serialVersionUID = 6597844453066971494L;
 	private final JPanel contentPanel = new JPanel();
-	
-	private JTextField txtP_Nombre;
-	private JTextField txtCedula;
-	private JTextField txtDireccion;
-	private JTextField txtTelefono;
 	
 	private JTable tabPacientes; // Esta tabla muestra la lista de pacientes
 	
@@ -56,22 +54,14 @@ public class ObjAutorizacion extends JDialog {
 	private JButton btnEliminar; 
 	private JButton btnRegistrar; 
 	private JButton cancelButton;
-	
-	private JPasswordField passwordField;
-	private JTextField txtS_Nombre;
-	private JTextField textP_Apellido;
-	private JTextField txtS_Apellido;
-	private JTextField txtFechaNacimiento;
-	private JLabel lblGrupoSanguineo;
-	private JTextField txtGrupoSanguioneo;
-	private JLabel lblSexo;
-	private JTextField txtSexo;
-	private JLabel lblTelefono;
-	private JTextField txtTelefono2;
-	private JTextField txtID_Municipio;
-	private JTextField txtID_Especial;
 	private JLabel lblIdPaciente;
 	private JTextField txtID_Paciente;
+	private JLabel lblIdSolicitacion;
+	private JTextField txtID_Solicitacion;
+	private JTextField txtID_Receta;
+	private JTextField txtID_Centro_Salud;
+	private JTextField txtFecha_Solicitud;
+	private JTextField txtFecha_Aprobacion;
 
 	/**
 	 * Launch the application.
@@ -109,151 +99,71 @@ public class ObjAutorizacion extends JDialog {
 			contentPanel.add(panel);
 			panel.setLayout(null);
 			
-			JLabel lblNombre = new JLabel("Nombre :");
-			lblNombre.setBounds(10, 22, 100, 14);
-			panel.add(lblNombre);
-			
-			JLabel lblDireccion = new JLabel("Direcci\u00F3n :");
-			lblDireccion.setBounds(10, 346, 100, 14);
-			panel.add(lblDireccion);
-			
-			JLabel lblCedula = new JLabel("C\u00E9dula :");
-			lblCedula.setBounds(10, 130, 100, 14);
-			panel.add(lblCedula);
-			
-			txtP_Nombre = new JTextField();
-			txtP_Nombre.setBounds(120, 16, 100, 20);
-			panel.add(txtP_Nombre);
-			txtP_Nombre.setColumns(10);
-			
-			txtCedula = new JTextField();
-			txtCedula.setBounds(120, 124, 185, 20);
-			panel.add(txtCedula);
-			txtCedula.setColumns(10);
-			
-			txtDireccion = new JTextField();
-			txtDireccion.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					btnRegistrar.requestFocus();
-					btnRegistrar.doClick();
-				}
-			});
-			txtDireccion.setBounds(120, 340, 336, 20);
-			panel.add(txtDireccion);
-			txtDireccion.setColumns(10);
-			
-			JLabel lblTelefono1 = new JLabel("Telefono (1):");
-			lblTelefono1.setBounds(10, 202, 100, 14);
-			panel.add(lblTelefono1);
-			
-			txtTelefono = new JTextField();
-			txtTelefono.setBounds(120, 196, 185, 20);
-			panel.add(txtTelefono);
-			txtTelefono.setColumns(10);
-			
-			JLabel lblContrasea = new JLabel("Contrase\u00F1a :");
-			lblContrasea.setBounds(10, 166, 100, 14);
-			panel.add(lblContrasea);
-			
-			passwordField = new JPasswordField();
-			passwordField.setBounds(120, 160, 185, 20);
-			panel.add(passwordField);
-			
-			JLabel lblS_nombre = new JLabel("Segundo Nombre :");
-			lblS_nombre.setBounds(281, 22, 120, 14);
-			panel.add(lblS_nombre);
-			
-			txtS_Nombre = new JTextField();
-			txtS_Nombre.setColumns(10);
-			txtS_Nombre.setBounds(411, 16, 100, 20);
-			panel.add(txtS_Nombre);
-			
-			JLabel lblApellido = new JLabel("Apellido :");
-			lblApellido.setBounds(10, 58, 100, 14);
-			panel.add(lblApellido);
-			
-			textP_Apellido = new JTextField();
-			textP_Apellido.setBounds(120, 52, 100, 20);
-			panel.add(textP_Apellido);
-			textP_Apellido.setColumns(10);
-			
-			JLabel lblS_Apellido = new JLabel("Segundo Apellido :");
-			lblS_Apellido.setBounds(281, 58, 120, 14);
-			panel.add(lblS_Apellido);
-			
-			txtS_Apellido = new JTextField();
-			txtS_Apellido.setBounds(411, 52, 100, 20);
-			panel.add(txtS_Apellido);
-			txtS_Apellido.setColumns(10);
-			
-			JLabel lblFechaDeNacimiento = new JLabel("Fecha de Nacimiento (dd/mm/aaaa) :");
-			lblFechaDeNacimiento.setBounds(328, 130, 220, 14);
-			panel.add(lblFechaDeNacimiento);
-			
-			txtFechaNacimiento = new JTextField();
-			txtFechaNacimiento.setBounds(540, 127, 83, 20);
-			panel.add(txtFechaNacimiento);
-			txtFechaNacimiento.setColumns(10);
-			
-			lblGrupoSanguineo = new JLabel("Grupo Sanguineo : ");
-			lblGrupoSanguineo.setBounds(540, 22, 120, 14);
-			panel.add(lblGrupoSanguineo);
-			
-			txtGrupoSanguioneo = new JTextField();
-			txtGrupoSanguioneo.setBounds(670, 19, 40, 20);
-			panel.add(txtGrupoSanguioneo);
-			txtGrupoSanguioneo.setColumns(10);
-			
-			lblSexo = new JLabel("Sexo :");
-			lblSexo.setBounds(328, 97, 46, 14);
-			panel.add(lblSexo);
-			
-			txtSexo = new JTextField();
-			txtSexo.setBounds(416, 94, 40, 20);
-			panel.add(txtSexo);
-			txtSexo.setColumns(10);
-			
-			lblTelefono = new JLabel("Telefono (2) :");
-			lblTelefono.setBounds(12, 238, 100, 14);
-			panel.add(lblTelefono);
-			
-			txtTelefono2 = new JTextField();
-			txtTelefono2.setBounds(120, 232, 185, 20);
-			panel.add(txtTelefono2);
-			txtTelefono2.setColumns(10);
-			
-			JLabel lblIdMunicipio = new JLabel("ID Municipio :");
-			lblIdMunicipio.setBounds(10, 274, 100, 14);
-			panel.add(lblIdMunicipio);
-			
-			txtID_Municipio = new JTextField();
-			txtID_Municipio.setBounds(120, 268, 40, 20);
-			panel.add(txtID_Municipio);
-			txtID_Municipio.setColumns(10);
-			
-			JLabel lblIdEspecial = new JLabel("ID Especial :");
-			lblIdEspecial.setBounds(10, 310, 100, 14);
-			panel.add(lblIdEspecial);
-			
-			txtID_Especial = new JTextField();
-			txtID_Especial.setBounds(120, 304, 40, 20);
-			panel.add(txtID_Especial);
-			txtID_Especial.setColumns(10);
-			
 			lblIdPaciente = new JLabel("ID Paciente :");
-			lblIdPaciente.setBounds(10, 94, 100, 14);
+			lblIdPaciente.setBounds(10, 132, 100, 14);
 			panel.add(lblIdPaciente);
 			
 			txtID_Paciente = new JTextField();
-			txtID_Paciente.setBounds(120, 91, 100, 20);
+			txtID_Paciente.setBounds(120, 129, 100, 20);
 			panel.add(txtID_Paciente);
 			txtID_Paciente.setColumns(10);
 			
-			JLabel label = new JLabel("");
-			label.setIcon(new ImageIcon(ObjAutorizacion.class.getResource("/imagenes/icoPaciente.jpg")));
-			label.setHorizontalAlignment(SwingConstants.CENTER);
-			label.setBounds(48, -163, 1274, 850);
-			panel.add(label);
+			lblIdSolicitacion = new JLabel("ID Solicitacion :");
+			lblIdSolicitacion.setBounds(10, 62, 100, 14);
+			panel.add(lblIdSolicitacion);
+			
+			txtID_Solicitacion = new JTextField();
+			txtID_Solicitacion.setBounds(120, 59, 86, 20);
+			panel.add(txtID_Solicitacion);
+			txtID_Solicitacion.setColumns(10);
+			
+			JLabel lblIdReceta = new JLabel("ID Receta :");
+			lblIdReceta.setBounds(10, 104, 100, 14);
+			panel.add(lblIdReceta);
+			
+			txtID_Receta = new JTextField();
+			txtID_Receta.setBounds(120, 101, 86, 20);
+			panel.add(txtID_Receta);
+			txtID_Receta.setColumns(10);
+			
+			JLabel lblIdCentroSalud = new JLabel("ID Centro Salud :");
+			lblIdCentroSalud.setBounds(10, 175, 100, 14);
+			panel.add(lblIdCentroSalud);
+			
+			txtID_Centro_Salud = new JTextField();
+			txtID_Centro_Salud.setBounds(120, 172, 86, 20);
+			panel.add(txtID_Centro_Salud);
+			txtID_Centro_Salud.setColumns(10);
+			
+			JLabel lblFechaSolicitud = new JLabel("Fecha Solicitud :");
+			lblFechaSolicitud.setBounds(10, 224, 100, 14);
+			panel.add(lblFechaSolicitud);
+			
+			txtFecha_Solicitud = new JTextField();
+			txtFecha_Solicitud.setBounds(120, 221, 86, 20);
+			panel.add(txtFecha_Solicitud);
+			txtFecha_Solicitud.setColumns(10);
+			
+			JLabel lblAprobacion = new JLabel("Aprobacion :");
+			lblAprobacion.setBounds(10, 273, 100, 14);
+			panel.add(lblAprobacion);
+			
+			txtFecha_Aprobacion = new JTextField();
+			txtFecha_Aprobacion.setBounds(120, 309, 86, 20);
+			panel.add(txtFecha_Aprobacion);
+			txtFecha_Aprobacion.setColumns(10);
+			
+			JLabel lblFechaAprobacion = new JLabel("Fecha Aprobacion :");
+			lblFechaAprobacion.setBounds(10, 312, 100, 14);
+			panel.add(lblFechaAprobacion);
+			
+			Checkbox checkbox_Aprobado = new Checkbox("Aprobado");
+			checkbox_Aprobado.setBounds(120, 273, 95, 22);
+			panel.add(checkbox_Aprobado);
+			
+			Checkbox checkbox_Denegado = new Checkbox("Denegado");
+			checkbox_Denegado.setBounds(221, 273, 95, 22);
+			panel.add(checkbox_Denegado);
 		}
 		
 		JPanel panel = new JPanel();
